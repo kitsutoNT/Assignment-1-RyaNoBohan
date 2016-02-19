@@ -4,7 +4,7 @@
    
    This a concrete implementation of the Domain Model pattern.
  */
-class Referrer extends DomainObject
+class Referrer extends DomainObject implements JsonSerializable
 {  
    
    static function getFieldNames() {
@@ -14,6 +14,10 @@ class Referrer extends DomainObject
    public function __construct(array $data, $generateExc)
    {
       parent::__construct($data, $generateExc);
+   }
+   
+   public function jsonSerialize() {
+      return ['id'=> $this->__get('id'), 'name'=>$this->__get('name')];
    }
    
    // implement any setters that need input checking/validation

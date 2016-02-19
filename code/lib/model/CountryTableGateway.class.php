@@ -26,7 +26,15 @@ class CountryTableGateway extends TableDataGateway
       return "ISO";
    }
 
-
+   public function findCountriesWithCountsById($id) {
+      $sql = "SELECT CountryName, COUNT( visits.id ) AS VisitsFromCountry
+      FROM visits
+      INNER JOIN countries ON visits.country_code = countries.ISO
+      WHERE countries.continent=:id
+      GROUP BY CountryName";
+      $results = $this->dbAdapter->fetchAsArray($sql, Array(':id' => $id));   
+      return $this->convertRecordsToObjects($results);  
+   }
 }
 
 ?>

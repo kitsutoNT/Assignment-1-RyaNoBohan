@@ -4,7 +4,7 @@
    
    This a concrete implementation of the Domain Model pattern.
  */
-class DeviceType extends DomainObject
+class DeviceType extends DomainObject implements JsonSerializable
 {  
    
    static function getFieldNames() {
@@ -16,6 +16,9 @@ class DeviceType extends DomainObject
       parent::__construct($data, $generateExc);
    }
    
+   public function jsonSerialize() {
+      return ['ID'=> $this->__get('ID'), 'name'=>$this->__get('name')];
+   }
    // implement any setters that need input checking/validation
 }
 

@@ -2,7 +2,7 @@
 /*
   Table Data Gateway for the operating-systems table.
  */
-class DeviceBrandTableGateway extends TableDataGateway
+class OperatingSystemTableGateway extends TableDataGateway
 {    
    public function __construct($dbAdapter) 
    {
