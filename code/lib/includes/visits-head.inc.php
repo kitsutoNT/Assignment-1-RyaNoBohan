@@ -24,5 +24,3 @@ The JavaScript file-->
 <!--CSS Custome Style Sheet-->
 <link rel="stylesheet" type="text/css" href="lib/includes/customStyleSheet.css">
 
-<script src="lib/includes/jsHelpers.js"></script> 
-

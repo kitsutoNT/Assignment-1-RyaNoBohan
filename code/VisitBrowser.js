@@ -20,13 +20,13 @@ function outputFilterCard(mainPath) {
 //send Ajax request when user makes change on any filters and output result rows 
 function dataRequestFromFilters(filtObj){
     $("#filters").on("change", "select", function() {
+        $(".mdl-spinner").addClass("is-active");
         $.get(filtObj.url, function(data) {
-            loadingAnimation($(".mdl-spinner"));
-            console.log($(".mdl-spinner"));
+            
             outputFilteredRows(data);
         })
         .always(function() {
-            loadingAnimation($(".mdl-spinner"));
+            $(".mdl-spinner").removeClass("is-active");
         });
     });
 }
@@ -88,7 +88,7 @@ function instantiateDialogBox(id) {
     var url = "serviceVisitsData.php?table=visits&visitID=" +id;
     
     $.get(url, function(data){
-        console.log(data);
+        //console.log(data);
         tr = appendToTr(tr, data.visitID);
         tr = appendToTr(tr, data.visitDate);
         tr = appendToTr(tr, data.visitTime);

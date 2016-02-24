@@ -124,11 +124,7 @@ function displayDefaultAreaChart()
         count++;
     });
     drawAreaChart(days, visits, 1);
-    loadingAnimation($("#areaChartCard .mdl-spinner"));
   })
-  .always(function () {
-    loadingAnimation($("#areaChartCard .mdl-spinner"));
-  });
 }
 
 /*
@@ -139,6 +135,7 @@ function displayAreaChart()
   $("#monthDrop1").change(function(){
     var month = this.value;
     var chosenMonth = "serviceVisitsData.php?table=visits&month=" + this.value;
+    $("#areaChartCard .mdl-spinner").addClass("is-active");
     $.get(chosenMonth, function(data) {
       var count = 1;
       var days = [];
@@ -150,10 +147,9 @@ function displayAreaChart()
           count++;
       });
       drawAreaChart(days, visits, month);
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
     })
     .always(function () {
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
+      $("#areaChartCard .mdl-spinner").removeClass("is-active");
     });
   });
 }
@@ -173,11 +169,8 @@ function displayDefaultGeoChart()
         country.push(object.countryName);
     });
     drawGeoChart(country, visits, 01);
-    loadingAnimation($("#areaChartCard .mdl-spinner"));
-  })
-  .always(function () {
-    loadingAnimation($("#areaChartCard .mdl-spinner"));
   });
+
 }
 
 /*
@@ -188,6 +181,7 @@ function displayGeoChart()
   $("#monthDrop2").change(function(){
     var month = this.value;
     var chosenMonth = "serviceVisitsData.php?table=countryVisitsGeoChart&month=" + this.value;
+     $("#geoChartCard .mdl-spinner").addClass("is-active");
     $.get(chosenMonth, function(data) {
       var country = [];
       var visits = [];
@@ -197,10 +191,9 @@ function displayGeoChart()
           country.push(object.countryName);
       });
       drawGeoChart(country, visits, month);
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
     })
     .always(function () {
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
+     $("#geoChartCard .mdl-spinner").removeClass("is-active");
     });
   });
 }
@@ -254,10 +247,9 @@ function displayColumnChart()
       may[0] = visitsMay;
       sept[0] = visitsSept;
       countries[0] = countryName;
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
     })
     .always(function () {
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
+      
     });
   });
   
@@ -282,15 +274,15 @@ function displayColumnChart()
       may[1] = visitsMay;
       sept[1] = visitsSept;
       countries[1] = countryName;
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
     })
     .always(function () {
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
+      
     });
   });
   
   $("#countryDrop3").change(function(){
     var chosenCountryISO = "serviceVisitsData.php?table=countryVisitsJanMaySept&countryISO=" + this.value;
+    $("#columnChartCard .mdl-spinner").addClass("is-active");
     $.get(chosenCountryISO, function(data) {
       var countryName = "";
       var visitsJan = "";
@@ -310,10 +302,9 @@ function displayColumnChart()
       may[2] = visitsMay;
       sept[2] = visitsSept;
       countries[2] = countryName;
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
     })
     .always(function () {
-      loadingAnimation($("#areaChartCard .mdl-spinner"));
+      $("#columnChartCard .mdl-spinner").removeClass("is-active");
     });
   });
 }

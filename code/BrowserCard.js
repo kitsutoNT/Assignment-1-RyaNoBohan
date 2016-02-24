@@ -26,19 +26,20 @@ function outputBrowserCard () {
 //call loading animation when user makes change in device filter
 function outputDeviceCard() {
     var url = 'serviceVisitsData.php?table=device';
+    
     $.get(url, function(data) {
         deviceDropDownListOptions(data);
     });
         
     $("#deviceDrop").change(function(){
         var chosenBrand = url + "&brand_id=" + this.value;
-        
+        $("#deviceCard .mdl-spinner").addClass("is-active");
         $.get(chosenBrand, function(data) {
             outputDeviceVisitCount(data);
-            loadingAnimation($("#deviceCard .mdl-spinner"));
+            
         })
          .always(function () {
-             loadingAnimation($("#deviceCard .mdl-spinner"));
+             $(".mdl-spinner").removeClass("is-active");
          });   
     });
     
@@ -67,12 +68,12 @@ function outputCountryCard() {
 
     $("#continentDrop").change(function(){
         var chosenContinent = "serviceVisitsData.php?table=country&continentCode=" + this.value;
+        $("#countryCard .mdl-spinner").addClass("is-active");
         $.get(chosenContinent, function(data) {
             outputCountriesVisitCount(data);
-           loadingAnimation($("#countryCard .mdl-spinner"));
         })
             .always(function () {
-             loadingAnimation($("#countryCard .mdl-spinner"));
+             $("#countryCard .mdl-spinner").removeClass("is-active");
             });   
     })
 }

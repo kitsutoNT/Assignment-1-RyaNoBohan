@@ -8,6 +8,12 @@
     header('Content-type: application/json');
     header("Access-Control-Allow-Origin: *");
     
+    /*
+        If else statements to process the passed query string parameters
+        table = table being accessed or specific data operation
+        Set along with an identifier when a specific value is required
+    */
+    
     if ($_GET["table"] == "device" && !isset($_GET["brand_id"])) {
         outputDevice($dbAdapter);
     }
@@ -59,7 +65,11 @@
         outputFullVisitData($dbAdapter);
         //
     }
-    
+
+    /*
+        Takes the visit id passed by query string parameter and uses the id to get the specific
+        visit record. Then handles the result and returns it in JSON format
+    */
     function outputFullVisitData ($dbAdapter) {
         $id = $_GET["visitID"];
         
@@ -83,6 +93,10 @@
         //echo json_encode($result);
     }
     
+    /*
+        Forms the FROM and WHERE clauses that will be used in the data access layer
+        Then handles the result and returns it in JSON format
+    */
     function outputFilteredVisits($dbAdapter){
         
         $joinWhereClause = "visits.country_code = countries.ISO";
@@ -144,10 +158,9 @@
         }
         
         echo json_encode($dataInfoArray);
-        //echo json_encode($result);
-        
     }
     
+    //outputs filtered countries by partial string
     function outputFilteredCountries($dbAdapter) {
         $term = $_GET["term"];
         $countryGate = new CountryTableGateway($dbAdapter);
@@ -163,6 +176,7 @@
         echo json_encode($countryInfoArray);  
     }
     
+    //output all countries
     function outputCountries($dbAdapter) {
         $countryGate = new CountryTableGateway($dbAdapter);
         $result = $countryGate->findAllSorted(CountryName);
@@ -177,6 +191,7 @@
         echo json_encode($countryInfoArray);
     }
     
+    //output all referrers
     function outputReferrers($dbAdapter) {
         $referrerGate= new ReferrerTableGateway($dbAdapter);
         $result= $referrerGate->findAllSorted(name);
@@ -184,6 +199,7 @@
         echo json_encode($result);
     }
     
+    //output all operating systems
     function outputOperatingSystems($dbAdapter) {
         $osGate= new OperatingSystemTableGateway($dbAdapter);
         $result= $osGate->findAllSorted(name);
@@ -191,6 +207,7 @@
         echo json_encode($result);
     }
     
+    //output all device types
     function outputDeviceTypes($dbAdapter) {
         $deviceTypeGate= new DeviceTypeTableGateway($dbAdapter);
         $result= $deviceTypeGate->findAllSorted(name);
@@ -198,6 +215,7 @@
         echo json_encode($result);
     }
     
+    //output countries that are located in a certain continent
     function outputCountriesByContinent($dbAdapter) {
         $userContinent = $_GET["continentCode"];
         $countryGate = new CountryTableGateway($dbAdapter);
@@ -214,13 +232,14 @@
         echo json_encode($countryInfoArray);
     }
     
+    //output all device brands
     function outputDevice ($dbAdapter) {
         $gateBrands = new DeviceBrandTableGateway($dbAdapter);
         $result = $gateBrands->findAllSorted(name);
         echo json_encode($result);
     }
     
-    
+    //output all device brands with their associated visit counts
     function outputBrandCounts($dbAdapter) {
         $id = $_GET["brand_id"];
         if (!empty($id) && is_numeric($id) && $id >= 1 && $id <= 12){
@@ -231,6 +250,7 @@
         }
     }
     
+    //output #of visits by browser
     function outputBrowser($dbAdapter) {
         $gateVisits = new VisitTableGateway($dbAdapter);
         $result = $gateVisits->findNumberOfVisits();
@@ -246,6 +266,7 @@
         echo json_encode($browserInfoArray);
     }
     
+    // output all continents
     function outputContinents($dbAdapter) {
         $gateContinent = new ContinentTableGateway($dbAdapter);
         $result = $gateContinent->findAllSorted(ContinentName);

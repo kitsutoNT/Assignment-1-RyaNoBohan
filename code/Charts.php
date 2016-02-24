@@ -103,7 +103,7 @@ require_once("lib/helpers/visits-setup.inc.php");
                     <div class="mdl-spinner mdl-js-spinner"></div>
                     <div>
                     <div id="columnchart_material"></div>  
-                    <div class="mdl-spinner mdl-js-spinner"></div>
+                    <div id="" class="mdl-spinner mdl-js-spinner"></div>
                     <button id="chartIt" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                         Chart It
                     </button>

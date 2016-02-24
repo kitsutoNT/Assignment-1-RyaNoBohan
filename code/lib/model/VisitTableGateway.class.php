@@ -113,6 +113,12 @@ GROUP BY browsers.name";
       return $this->convertRecordsToObjects($results); 
    }
    
+   /*
+      Takes in the where and from clauses and performs a query for the filtered visit data
+      @joinWhereClause = part of where clause that joins the tables
+      @fromClause = from clause listing the tables being accessed
+      @filterWhereClause = part of where clause that actually performs the filtering
+   */
    public function filteredVisitData($joinWhereClause, $fromClause, $filterWhereClause) {
       
       $sql = "SELECT visits.id, visits.visit_date, visits.visit_time, visits.ip_address, countries.countryName ";
@@ -124,6 +130,11 @@ GROUP BY browsers.name";
       //return $sql;
    }
    
+   /*
+      Retrieves a single record from the visit table based on visit ID. Includes the names of the device type, device brand,
+      browser, referrer, country, and operating system
+      @visitID = visit id of the specified record in the visits table
+   */
    public function singleVisitData ($visitID) {
       $sql = "SELECT visits.id, visits.visit_date, visits.visit_time, visits.ip_address, countries.countryName,"
                 . " device_types.name AS 'typeName', device_brands.name AS 'brandName', "
