@@ -165,16 +165,16 @@ function autocompleteCountries(objType, filtObj){
         minLength: 1,
         select: function(event, ui){
             updatedObj = addCountryToURL(objType, filtObj, ui.item.value);
-            console.log(updatedObj);
-            $.get(filtObj.url, function(data) {
-                //show loading animation by adding "is-active" class to spinner
-            loadingAnimation($(".mdl-spinner"));
-            outputFilteredRows(data);
+            //console.log(updatedObj);
+            //show loading animation by adding "is-active" class to spinner
+            $(".mdl-spinner").addClass("is-active");
+            $.get(updatedObj.url, function(data) {
+                outputFilteredRows(data);
             })
             
             .always(function() {
                 //delete loading animatin by removing "is-active" class in spinner
-            loadingAnimation($(".mdl-spinner"));
+            $(".mdl-spinner").removeClass("is-active");
             });
         },
     });
@@ -183,7 +183,7 @@ function autocompleteCountries(objType, filtObj){
     $("#search").on("input", function() {
         if ($(this).val() == "") {
             updatedObj.url = updatedObj.url.replace("&country=" + updatedObj.country, "");
-            updatedObj.country=null;
+            updatedObj.country="";
             $.get(filtObj.url, function(data) {
             outputFilteredRows(data);
             });
