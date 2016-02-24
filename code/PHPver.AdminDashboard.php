@@ -5,7 +5,6 @@ function outputBrowser($dbAdapter) {
   $gateVisits = new VisitTableGateway($dbAdapter);
   $result = $gateVisits->findNumberOfVisits();
   
-  
   echo '<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
           <thead>
             <tr>
@@ -21,10 +20,8 @@ function outputBrowser($dbAdapter) {
               <td>'. $row->PercentVisits .'</td>
               </tr>';
   }
-  
   echo '</tbody>
             </table>';
-
 }
 
 function outputFilterBrand($dbAdapter) {
@@ -36,7 +33,6 @@ function outputFilterBrand($dbAdapter) {
 		echo $row->name;
 		echo '</option>';
   }
-  
 }
 
 function outputBrandCounts($dbAdapter){
@@ -66,7 +62,6 @@ function outputBrandCounts($dbAdapter){
 }
 
 function outputContinents($dbAdapter) {
-
     $gateContinent = new ContinentTableGateway($dbAdapter);
     $result = $gateContinent->findAllSorted(ContinentName);
     
@@ -97,8 +92,6 @@ function outputCountriesWithVisits($dbAdapter) {
           <td>'. $row->VisitsFromCountry.'</td>
           </tr>';
   }
-              
-              
     echo '</tbody>
             </table>';
           
@@ -107,11 +100,7 @@ function outputCountriesWithVisits($dbAdapter) {
   echo "<h2>Chosen continent does not exist</h2>";
 }
 
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -122,16 +111,12 @@ function outputCountriesWithVisits($dbAdapter) {
         <!-- Simple header with fixed tabs. -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
                     mdl-layout--fixed-tabs">
-         
          <?php include "lib/includes/visits-header.inc.php" ?>
-         
           <main class="mdl-layout__content">
             <div class="page-content">
               <!-- Your content goes here -->
             <div>
               <div class="mdl-grid">
-              
-                
                 <div class="mdl-cell mdl-cell--4-col">
                   <!-- Side Card 1  -->
                   <div class="mdl-card mdl-shadow--2dp">
@@ -191,7 +176,6 @@ function outputCountriesWithVisits($dbAdapter) {
                     </div>
                   </div>
                 </div>
-                
               </div>
               <?php include "lib/includes/visits-footer.inc.php" ?>
               </div>

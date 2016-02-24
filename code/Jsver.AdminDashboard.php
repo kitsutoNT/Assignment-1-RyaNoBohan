@@ -1,10 +1,6 @@
 <?php
 require_once("lib/helpers/visits-setup.inc.php");
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +12,7 @@ require_once("lib/helpers/visits-setup.inc.php");
         <!-- Simple header with fixed tabs. -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
                     mdl-layout--fixed-tabs">
-         
          <?php include "lib/includes/visits-header.inc.php" ?>
-         
           <main class="mdl-layout__content">
             <div class="page-content">
               <!-- Your content goes here -->
@@ -39,11 +33,9 @@ require_once("lib/helpers/visits-setup.inc.php");
                           </tr>
                         </thead>
                         <tbody id='browserOutput'>
-                        
                         </tbody>
                       </table>
                     </div>  
-                   
                   
                   <!-- Side Card 2 -->
                   <div id="deviceCard" class="mdl-card mdl-shadow--2dp">
@@ -105,7 +97,6 @@ require_once("lib/helpers/visits-setup.inc.php");
                     </div>
                   </div>
                 </div>
-                
               </div>
               <?php include "lib/includes/visits-footer.inc.php" ?>
               </div>

@@ -23,7 +23,7 @@ class OperatingSystemTableGateway extends TableDataGateway
    }
   
    protected function getPrimaryKeyName() {
-      return "ID";
+      return "id";
    }
 
 

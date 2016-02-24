@@ -8,7 +8,7 @@ class OperatingSystem extends DomainObject implements JsonSerializable
 {  
    
    static function getFieldNames() {
-      return array('ID','name');
+      return array('id','name');
    }
 
    public function __construct(array $data, $generateExc)
@@ -16,7 +16,7 @@ class OperatingSystem extends DomainObject implements JsonSerializable
       parent::__construct($data, $generateExc);
    }
    public function jsonSerialize() {
-      return ['ID'=> $this->__get('ID'), 'name'=>$this->__get('name')];
+      return ['id'=> $this->__get('id'), 'name'=>$this->__get('name')];
    }
    
    // implement any setters that need input checking/validation

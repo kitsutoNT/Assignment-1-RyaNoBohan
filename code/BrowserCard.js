@@ -1,10 +1,10 @@
 window.addEventListener("load", init);
 
+//initialize three cards in this page
 function init() {
     outputBrowserCard();
     outputDeviceCard();
     outputCountryCard();
-    
 }
 
 function outputBrowserCard () {
@@ -14,7 +14,6 @@ function outputBrowserCard () {
         $("#browserOutput").append($('<tr>')); 
         
         var trBrowser = $("#browserOutput")[0].lastElementChild;
-        //console.log(trBrowser);
         
         var td = $('<td class="mdl-data-table__cell--non-numeric">').text(object.name);
         td.appendTo(trBrowser);
@@ -22,23 +21,9 @@ function outputBrowserCard () {
         td.appendTo(trBrowser);
         });
     });
-        // .done(function (data) {
-        //         console.log(data);
-        //         console.log("this is success"); 
-        //     })
-        //     .fail(function (jqXHR) {
-        //      //console.log("Error: " + jqXHR.status);
-        //      //console.log(jqXHR);
-        //      //console.log("this is error");
-        //  })
-        //  .always(function () {
-        //      //console.log("All Done");
-        //      //console.log("this is always done");
-        //  });   
 }
 
-
-
+//call loading animation when user makes change in device filter
 function outputDeviceCard() {
     var url = 'serviceVisitsData.php?table=device';
     $.get(url, function(data) {
@@ -52,51 +37,47 @@ function outputDeviceCard() {
             outputDeviceVisitCount(data);
             loadingAnimation($("#deviceCard .mdl-spinner"));
         })
-            
          .always(function () {
-             //console.log("All Done");
-             //console.log("this is always done");
              loadingAnimation($("#deviceCard .mdl-spinner"));
          });   
     });
     
 }
 
+//helper function called by outputDeviceCard function to output the # of visits by devices
 function outputDeviceVisitCount(data) {
     $("#brandCount").text(data);
     $("#brandName").text($("#deviceDrop")[0].selectedOptions[0].innerText);
-    
 }
 
+//helper function called by outputDeviceCard function to output all devices in options in dropdown lists
 function deviceDropDownListOptions(data){
     $.each(data, function( key, object) {
         $("#deviceDrop").append($('<option>', {value: object.id, text: object.name})); 
     });
 } 
 
+//call loading animation when user changes continent in filter 
 function outputCountryCard() {
     var url = "serviceVisitsData.php?table=continent";
     
     $.get(url, function(data) {
         continentDropDownListOptions(data);
-        //console.log(data);
     });
-    
+
     $("#continentDrop").change(function(){
         var chosenContinent = "serviceVisitsData.php?table=country&continentCode=" + this.value;
         $.get(chosenContinent, function(data) {
-            //console.log(data);
             outputCountriesVisitCount(data);
            loadingAnimation($("#countryCard .mdl-spinner"));
         })
             .always(function () {
-             //console.log("All Done");
-             //console.log("this is always done");
              loadingAnimation($("#countryCard .mdl-spinner"));
             });   
     })
 }
 
+//helper function called by outputCountryCard function to output the # of visits by countries
 function outputCountriesVisitCount(data) {
     $("#countryCount").empty();
     
@@ -104,7 +85,6 @@ function outputCountriesVisitCount(data) {
         $("#countryCount").append($('<tr>')); 
         
         var trCountry = $("#countryCount")[0].lastElementChild;
-        //console.log(trBrowser);
         
         var td = $('<td class="mdl-data-table__cell--non-numeric">').text(object.name);
         td.appendTo(trCountry);
@@ -113,19 +93,11 @@ function outputCountriesVisitCount(data) {
         });
 }
 
+// helper function called by outputCountryCard to output all continents in options in dropdown list
 function continentDropDownListOptions(data) {
     $.each(data, function( key, object) {
         $("#continentDrop").append($('<option>', {value: object.ContinentCode, text: object.ContinentName})); 
     });
 }
 
-function loadingAnimation($element) {
-    if ($element.hasClass("is-active") == false) {
-        $element.addClass("is-active");
-        console.log("showing loading animation");
-    }
-    else {
-        console.log("removed loading animation");
-        $element.removeClass("is-active");
-    }
-}
+

@@ -17,7 +17,7 @@ form {
     margin-right: auto;
 }
 
-#countryCard {
+#countryCard,#filterCard {
     width: 405px;
 }
 
@@ -30,10 +30,33 @@ form {
     margin: 0 auto;
 }
 
-#aboutUsCard {
+#aboutUsCard  {
     width: 570px;
 }
 
 #member td, #member th{
     text-align: center;
+}
+
+#dataCard {
+    width: 700px;
+}
+
+#dataTable {
+    width: 95%;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.mdl-button {
+    display: block;
+    margin: 0 auto;
+}
+
+#areaChartCard, #geoChartCard, #columnChartCard {
+    margin: 0 auto;
+    width: 425px;
+}
 }

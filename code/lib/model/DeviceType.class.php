@@ -8,7 +8,7 @@ class DeviceType extends DomainObject implements JsonSerializable
 {  
    
    static function getFieldNames() {
-      return array('ID','name');
+      return array('id','name');
    }
 
    public function __construct(array $data, $generateExc)
@@ -17,7 +17,7 @@ class DeviceType extends DomainObject implements JsonSerializable
    }
    
    public function jsonSerialize() {
-      return ['ID'=> $this->__get('ID'), 'name'=>$this->__get('name')];
+      return ['id'=> $this->__get('id'), 'name'=>$this->__get('name')];
    }
    // implement any setters that need input checking/validation
 }

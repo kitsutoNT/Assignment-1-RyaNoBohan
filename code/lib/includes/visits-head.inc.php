@@ -16,7 +16,13 @@ The JavaScript file-->
 <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.cyan-light_blue.min.css" />
 <script defer src="https://code.getmdl.io/1.1.1/material.min.js"></script>
 
+<!--Autocomplete plugin JS file -->
+<script src="EasyAutocomplete-1.3.3/jquery.easy-autocomplete.min.js"></script> 
+<!--Autocomplete CSS file -->
+<link rel="stylesheet" href="EasyAutocomplete-1.3.3/easy-autocomplete.min.css"> 
+
 <!--CSS Custome Style Sheet-->
 <link rel="stylesheet" type="text/css" href="lib/includes/customStyleSheet.css">
 
+<script src="lib/includes/jsHelpers.js"></script> 
 

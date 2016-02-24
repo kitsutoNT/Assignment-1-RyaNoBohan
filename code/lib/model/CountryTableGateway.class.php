@@ -35,6 +35,17 @@ class CountryTableGateway extends TableDataGateway
       $results = $this->dbAdapter->fetchAsArray($sql, Array(':id' => $id));   
       return $this->convertRecordsToObjects($results);  
    }
+   
+   public function filteredCountries($country) {
+      $country .= "%";
+      $sql = "SELECT countries.CountryName, countries.ISO
+               FROM countries
+               WHERE countries.CountryName LIKE :country 
+               ORDER BY countries.CountryName";
+      
+      $results = $this->dbAdapter->fetchAsArray($sql, Array(':country' => $country));   
+      return $this->convertRecordsToObjects($results);  
+   }
 }
 
 ?>

@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,7 +23,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
+                                <td>Bohan "BigBang" Yao</td>
                             </tr>
                             <tr>
                                 <td>Ryan "Eagle Eye" Barton</td>
@@ -53,6 +49,14 @@
                                 <tr>
                                     <td>Material Design Lite</td>
                                     <td><a href="http://www.getmdl.io/index.html">http://www.getmdl.io/index.html</a></td>
+                                </tr>
+                                <tr>
+                                    <td>jQuery UI Autocomplete</td>
+                                    <td><a href="http://jqueryui.com/autocomplete/">http://jqueryui.com/autocomplete/</a></td>
+                                </tr>
+                                <tr>
+                                    <td>jQuery UI Dialog</td>
+                                    <td><a href="https://jqueryui.com/dialog/">https://jqueryui.com/dialog/</a></td>
                                 </tr>
                             </tbody>
                         </table>
